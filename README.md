@@ -13,7 +13,7 @@ Create/View/Delete a routine:
 	DELETE /users/:userId/routines/:routineId
 	DELETE /users/:userId/routines
 
-Create/View/Delete/Update a statistic(stat)
+Create/View/Delete/Update a statistic(stat):
 	POST /users/:userId/stats
 	GET /users/:userId/stats
 	GET /users/:userId/stats/:statId
