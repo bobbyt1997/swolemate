@@ -36,7 +36,7 @@ app.route('/users')
 		console.log( "New user created. User ID: " + 
 		userIdCtr );
 
-		console.log(users);
+		console.log(users[userIdCtr]);
   
 		res.end( JSON.stringify() );
 
@@ -51,6 +51,16 @@ app.route('/users')
   	.get(function (req, res){
   		res.json(users);
   	})
+
+app.route('/users/:userId')
+	.get(function (req, res){
+		console.log("Now displaying user with ID: " + req.params.userId +
+			users[req.params.userId]);
+		res.json(users[req.params.userId]);
+	})
+	.delete(function (req, res){
+
+	})
 
 
 //-----------------------------------------------------------------------
