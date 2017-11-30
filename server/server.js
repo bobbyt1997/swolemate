@@ -54,12 +54,19 @@ app.route('/users')
 
 app.route('/users/:userId')
 	.get(function (req, res){
-		console.log("Now displaying user with ID: " + req.params.userId +
+		if(users[req.params.userId] === 'undefined' || users[req.params.userId] === null){
+			res.status(404).send("ERROR 404: ID not found");
+			console.log("User with specified ID does not exist");
+		}
+		else{
+			console.log("Now displaying user with ID: " + req.params.userId + "\n" +
 			users[req.params.userId]);
-		res.json(users[req.params.userId]);
+			res.json(users[req.params.userId]);
+		}
 	})
 	.delete(function (req, res){
-
+		delete users[req.params.userId];
+		res.end( "Deleted user with ID: " + JSON.stringify(req.params.userId));
 	})
 
 
