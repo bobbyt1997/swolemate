@@ -48,6 +48,9 @@ app.route('/users')
   		
   		userIdCtr++;
   	})
+  	.get(function (req, res){
+  		res.json(users);
+  	})
 
 
 //-----------------------------------------------------------------------
