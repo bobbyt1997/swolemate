@@ -13,7 +13,41 @@ app.use(parser.urlencoded({
    extended: true 
 }));
 
+app.route('/users')
+	.post(function (req, res) {
+  		var newUser = {
+    		"name" : "",
+    		"weight" : null,
+    		"height" : null,
+    		"sex" : null,
+    		"stats" : {},
+    		"workouts" : {},
+    		"weights" : {},
+    		"caloricCount" : {}
+   		};
 
+		newUser["name"] = req.body.name;
+		newUser["weight"] = req.body.weight;
+		newUser["height"] = req.body.height;
+		newUser["sex"] = req.body.sex;
+
+		users[userIdCtr] = newUser;
+  
+		console.log( "New user created. User ID: " + 
+		userIdCtr );
+
+		console.log(users);
+  
+		res.end( JSON.stringify() );
+
+		if (res.statusCode = 200){
+ 			console.log("200 OK");
+  		}
+  		else
+    		console.log("404 NOT FOUND");
+  		
+  		userIdCtr++;
+  	})
 
 
 //-----------------------------------------------------------------------
