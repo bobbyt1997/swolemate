@@ -90,7 +90,9 @@ app.route('/users/:userId/workouts')
 		}
 	})
 	.delete(function (req, res){
-
+		users[req.params.userId].workouts = {};
+		console.log(users[req.params.userId].workouts);
+		res.end();
 	})
 
 
