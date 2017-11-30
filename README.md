@@ -4,20 +4,20 @@
 
 Planned Routes:
 
-Create/View/Delete a user:
-	POST /users
-	GET /users/:userId
-	DELETE /users/:userId
+(COMPLETE) Create/View/Delete a user:
+	(COMPLETE) POST /users
+	(COMPLETE) GET /users/:userId
+	(COMPLETE) DELETE /users/:userId
 
 Create/View/Delete a routine:
-	POST /users/:userId/workouts
+	(COMPLETE) POST /users/:userId/workouts
 	POST /users/:userId/workouts/:workoutId/exercises
-	GET /users/:userId/workouts
+	(COMPLETE) GET /users/:userId/workouts
 	GET /users/:userId/workouts/:workoutId
 	GET /users/:userId/workouts/:workoutId/exercises
 	GET /users/:userId/workouts/:workoutId/exercises/:exerciseId
 	DELETE /users/:userId/workouts/:workoutId
-	DELETE /users/:userId/workouts
+	(COMPLETE) DELETE /users/:userId/workouts
 	DELETE /users/:userId/workouts/:workoutId/exercises
 	DELETE /users/:userId/workouts/:workoutId/exercises/:exerciseId
 
