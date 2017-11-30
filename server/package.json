@@ -8,5 +8,8 @@
     "start": "node server.js"
   },
   "author": "Bobby Ton, Kenneth Ellorando, Matthew Flavin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
