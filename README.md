@@ -1,3 +1,7 @@
+********CURRENT ISSUES***********
+- GET /users/:userId does not return 404 when nonexistent user is asked for. The 	request will return undefined when request for nonexistent user goes through.
+
+
 Planned Routes:
 
 Create/View/Delete a user:
@@ -23,3 +27,4 @@ Create/View/Delete/Update a statistic(stat):
 	GET /users/:userId/stats/:statId
 	DELETE /users/:userId/stats
 	DELETE /users/:userId/stats/:statId
+
