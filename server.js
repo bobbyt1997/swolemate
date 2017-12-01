@@ -133,7 +133,6 @@ app.route('/users/:userId/workouts/:workoutId/:exerciseName')
 	.post(function(req, res){
 		var workout = users[req.params.userId].workouts[req.params.workoutId];
 
-		console.log(req.params.exerciseName);
 		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
 			users[req.params.userId].workouts[req.params.workoutId] == null){
 			res.status(404).send("ERROR 404: ID not found");
@@ -145,10 +144,27 @@ app.route('/users/:userId/workouts/:workoutId/:exerciseName')
 
 	})
 	.get(function(req, res){
+		var workout = users[req.params.userId].workouts[req.params.workoutId];
 
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else{
+			res.json(workout[req.params.exerciseName]);
+		}
 	})
 	.delete(function(req, res){
+		var workout = users[req.params.userId].workouts[req.params.workoutId];
 
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else{
+			delete workout[req.params.exerciseName];
+			res.end("Exercise " + req.params.exerciseName + " deleted!");
+		}
 	})
 
 
