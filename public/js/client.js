@@ -21,11 +21,9 @@ $(document).ready(function () {
             dataType: "json",
             success: function (res) {
                 console.log('success');
-                console.log(res.status);
             },
             error: function(res) {
                 console.log('failure');
-                console.log(res.status);
             }
         });
     });
