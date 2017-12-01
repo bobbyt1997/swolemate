@@ -1,0 +1,64 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFAF0;
+}
+
+#front-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 4em;
+}
+
+.front-left,
+.front-right {
+    text-align: center;
+    align-content: center;
+}
+
+.front-left {
+    padding-bottom: 2em;
+}
+
+.input-group,
+.radio-inline {
+    padding-bottom: .5em;
+}
+
+#getSwole {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+#theo-img-front {
+    height: auto;
+    display: block;
+    margin: auto;
+    width: auto;
+    max-height: 100%;
+}
+
+@media (min-width: 45em) {
+    body {
+        margin-top: 3em;
+    }
+    .front-left {
+        padding-left: 4em;
+        padding-bottom: 0;
+    }
+    #getSwole {
+        margin-top: 2em;
+    }
+    #front-title {
+        padding-top: 1em;
+    }
+    #theo-img-front {
+        max-height: 40em;
+    }
+}
+
+
+}
