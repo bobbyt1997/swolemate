@@ -103,6 +103,19 @@ app.route('/users/:userId/workouts')
 		res.end();
 	})
   
+app.route('/users/:userId/workouts/:workoutId')
+	.get(function(req, res){
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else
+			res.json(users[req.params.userId].workouts[req.params.workoutId]);
+	})
+	.delete(function(req, res){
+
+	})
+
 
 //-----------------------------------------------------------------------
 var server = app.listen(8080, function () {
@@ -110,6 +123,6 @@ var server = app.listen(8080, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log("REMINDER APP listening at http://%s:%s", host, port);
+  console.log("SWOLEMATE listening at http://%s:%s", host, port);
 
 });
