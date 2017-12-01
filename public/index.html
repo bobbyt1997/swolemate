@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Swolemate</title>
@@ -8,18 +9,65 @@
 
     <!-- Bootstrap import -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700i" rel="stylesheet">
 
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./css/base.css">
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Client JS -->
+    <!-- Front end functionality -->
+    <script type="text/javascript" src="./js/function.js"></script>
+    <!-- Client to Server JS -->
     <script type="text/javascript" src="./js/client.js"></script>
 </head>
+
 <body>
-    <h1>Swolemate</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6 front-left">
+                <h1 id="front-title">Swolemate</h1>
+                <div class="input-group">
+                    <span class="input-group-addon">Name</span>
+                    <input id="input-name" type="text" class="form-control" placeholder="Swole Mate">
+                </div>
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Weight (lbs)</span>
+                            <input id="input-weight" type="text" class="form-control" placeholder="180">
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">Height (in)</span>
+                            <input id="input-height" type="text" class="form-control" placeholder="72">
+                        </div>
+                    </div>
+                </div>
+
+                <label class="radio-inline"><input type="radio" name="sex">Male</label>
+                <label class="radio-inline"><input type="radio" name="sex">Female</label>
+
+                <div>
+                    <button id="getSwole" type="button" class="btn btn-primary btn-lg">Get Swole</button>
+                </div>
+                <div>
+                    A project by <a href="https://github.com/Stolleys-Swolemates">Stolleys-Swolemates</a>
+                </div>
+            </div>
+            <div class="col col-md-6 front-right">
+                <img id="theo-img-front" class="img-responsive" src="https://scontent-ort2-2.cdninstagram.com/t51.2885-15/e35/18947949_1136440159833413_7795252302348025856_n.jpg"
+                    alt="Theo">
+            </div>
+        </div>
+
+    </div>
 </body>
+
 </html>
