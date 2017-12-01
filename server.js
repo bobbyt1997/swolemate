@@ -119,7 +119,14 @@ app.route('/users/:userId/workouts/:workoutId')
 			res.json(users[req.params.userId].workouts[req.params.workoutId]);
 	})
 	.delete(function(req, res){
-
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else
+			delete users[req.params.userId].workouts[req.params.workoutId];
+			res.end( "Deleted workout with ID: " + req.params.workoutId + 
+				" for user with ID: " + req.params.userId);
 	})
 
 
