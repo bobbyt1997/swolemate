@@ -18,20 +18,20 @@ app.route('/users')
 	.post(function (req, res) {
   		var newUser = {
     		"name" : "",
-    		"weight" : null,
-    		"height" : null,
+    		"weight" : 0,
+    		"height" : 0,
     		"sex" : null,
     		"stats" : {
-          "bench" : null,
-          "overheadpress" : null,
-          "deadlift" : null,
-          "squats" : null
+          "bench" : 0,
+          "overheadpress" : 0,
+          "deadlift" : 0,
+          "squats" : 0
         },
     		"workouts" : {},
     		"weights" : {},
     		"caloricCount" : {
-          "actual" : null,
-          "goal" : null
+          "actual" : 0,
+          "goal" : 0
         }
    		};
 
