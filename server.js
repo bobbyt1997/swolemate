@@ -21,10 +21,18 @@ app.route('/users')
     		"weight" : null,
     		"height" : null,
     		"sex" : null,
-    		"stats" : {},
+    		"stats" : {
+          "bench" : null,
+          "overheadpress" : null,
+          "deadlift" : null,
+          "squats" : null
+        },
     		"workouts" : {},
     		"weights" : {},
-    		"caloricCount" : {}
+    		"caloricCount" : {
+          "actual" : null,
+          "goal" : null
+        }
    		};
 
 		newUser["name"] = req.body.name;
@@ -94,7 +102,7 @@ app.route('/users/:userId/workouts')
 		console.log(users[req.params.userId].workouts);
 		res.end();
 	})
-
+  
 
 //-----------------------------------------------------------------------
 var server = app.listen(8080, function () {
