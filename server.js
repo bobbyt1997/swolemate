@@ -21,10 +21,18 @@ app.route('/users')
     		"weight" : null,
     		"height" : null,
     		"sex" : null,
-    		"stats" : {},
+    		"stats" : {
+          "bench" : null,
+          "overheadpress" : null,
+          "deadlift" : null,
+          "squats" : null
+        },
     		"workouts" : {},
     		"weights" : {},
-    		"caloricCount" : {}
+    		"caloricCount" : {
+          "actual" : null,
+          "goal" : null
+        }
    		};
 
 		newUser["name"] = req.body.name;
@@ -64,8 +72,14 @@ app.route('/users/:userId')
 		}
 	})
 	.delete(function (req, res){
-		delete users[req.params.userId];
-		res.end( "Deleted user with ID: " + JSON.stringify(req.params.userId));
+		if(users[req.params.userId] == 'undefined' ||
+			users[req.params.userId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else{
+			delete users[req.params.userId];
+			res.end( "Deleted user with ID: " + req.params.userId);
+		}
 	})
 
 app.route('/users/:userId/workouts')
@@ -94,6 +108,26 @@ app.route('/users/:userId/workouts')
 		console.log(users[req.params.userId].workouts);
 		res.end();
 	})
+  
+app.route('/users/:userId/workouts/:workoutId')
+	.get(function(req, res){
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else
+			res.json(users[req.params.userId].workouts[req.params.workoutId]);
+	})
+	.delete(function(req, res){
+		if(users[req.params.userId].workouts[req.params.workoutId] == 'undefined' ||
+			users[req.params.userId].workouts[req.params.workoutId] == null){
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else
+			delete users[req.params.userId].workouts[req.params.workoutId];
+			res.end( "Deleted workout with ID: " + req.params.workoutId + 
+				" for user with ID: " + req.params.userId);
+	})
 
 
 //-----------------------------------------------------------------------
@@ -102,6 +136,6 @@ var server = app.listen(8080, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log("REMINDER APP listening at http://%s:%s", host, port);
+  console.log("SWOLEMATE listening at http://%s:%s", host, port);
 
 });
