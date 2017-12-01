@@ -78,7 +78,7 @@ app.route('/users/:userId')
 		}
 		else{
 			delete users[req.params.userId];
-			res.end( "Deleted user with ID: " + JSON.stringify(req.params.userId));
+			res.end( "Deleted user with ID: " + req.params.userId);
 		}
 	})
 
