@@ -45,13 +45,14 @@ app.route('/users')
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
   
-		res.end();
 
 		if (res.statusCode = 200){
  			console.log("200 OK");
+ 			res.end(res.statusCode);
   		}
   		else
     		console.log("404 NOT FOUND");
+    		res.status(404).send("ERROR Creating User");
   		
   		userIdCtr++;
   	})
