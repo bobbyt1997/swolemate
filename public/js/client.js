@@ -22,7 +22,7 @@ $(document).ready(function () {
             success: function (res) {
                 console.log('success');
             },
-            error: function() {
+            error: function(res) {
                 console.log('failure');
             }
         });
