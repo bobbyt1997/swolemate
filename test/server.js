@@ -13,7 +13,7 @@ describe('/POST /users', () => {
         "name" : "John Smith",
         "weight": 0,
         "height": 0,
-        "sex": null
+        "sex": "male"
       };
         chai.request(server)
             .post('/users')
@@ -24,3 +24,16 @@ describe('/POST /users', () => {
             });
       });
  });
+
+describe('/GET /users/:userId', () => {
+  it('it should GET relevant user information', (done) => {
+    chai.request(server)
+      .get('/users/0')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.eql({"name":"John Smith","weight":0,"height":0,"sex":"male","stats":{"bench":0,"overheadpress":0,"deadlift":0,"squats":0},"workouts":{},"weights":{},"caloricCount":{"actual":0,"goal":0}});
+        done();
+      });
+  });
+});
