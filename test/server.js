@@ -79,8 +79,31 @@ describe('/POST /users/:userId/workouts', () => {
             .post('/users/0/workouts')
             .send(newWorkout)
             .end((err, res) => {
-                res.should.have.status(500);
+              res.should.have.status(200);
               done();
             });
       });
  });
+
+describe('/GET /users/:userId/workouts/:workoutId', () => {
+  it('it should GET workout information with specified id from specified user', (done) => {
+    chai.request(server)
+      .get('/users/0/workouts/0')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.eql({
+        "name" : "Chest Workout",
+        "bench": {
+          "sets": 5,
+          "reps": 10
+        },
+        "flies": {
+          "sets": 5,
+          "reps": 10
+        }
+      });
+        done();
+      });
+  });
+});

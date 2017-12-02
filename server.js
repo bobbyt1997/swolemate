@@ -78,22 +78,20 @@ app.route('/users/:userId')
 
 app.route('/users/:userId/workouts')
 	.post(function (req, res){
-		var newWorkout = {};
+		console.log(users[req.params.userId].workouts[workoutIdCtr]);
+		users[req.params.userId].workouts[workoutIdCtr] = req.body;
+		console.log(users[req.params.userId].workouts[workoutIdCtr]);
 
-		newWorkout = req.body;
-
-		users[req.params.userId].workouts[workoutIdCtr] = newWorkout;
-
-		res.status(200).send();
-		res.end();
+		res.status(200).end();
 		workoutIdCtr++;
+		
 	})
 	.get(function (req, res){
 		if(users[req.params.userId].workouts == 'undefined' || 
 			users[req.params.userId].workouts == null){
 			res.status(404).send("ERROR 404: ID not found");
 		}
-		else{
+		else {
 			res.json(users[req.params.userId].workouts);
 			console.log(users[req.params.userId].workouts);
 		}
