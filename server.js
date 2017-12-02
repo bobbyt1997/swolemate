@@ -44,7 +44,10 @@ app.route('/users')
 
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
-  		userIdCtr++;
+  		
+		res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
+
+  	userIdCtr++;
   	})
   	.get(function (req, res){
   		res.json(users);
@@ -81,6 +84,7 @@ app.route('/users/:userId/workouts')
 
 		users[req.params.userId].workouts[workoutIdCtr] = newWorkout;
 
+		res.status(200).send();
 		res.end();
 		workoutIdCtr++;
 	})
@@ -221,3 +225,5 @@ var server = app.listen(8080, function () {
   console.log("SWOLEMATE listening at http://%s:%s", host, port);
 
 });
+
+module.exports = app;
