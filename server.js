@@ -28,7 +28,7 @@ app.route('/users')
           "squats" : 0
         },
     		"workouts" : {},
-    		"weights" : {},
+    		"weights" : [],
     		"caloricCount" : {
           "actual" : 0,
           "goal" : 0
@@ -44,7 +44,10 @@ app.route('/users')
 
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
-  		userIdCtr++;
+  		
+		res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
+
+  	userIdCtr++;
   	})
   	.get(function (req, res){
   		res.json(users);
@@ -81,6 +84,7 @@ app.route('/users/:userId/workouts')
 
 		users[req.params.userId].workouts[workoutIdCtr] = newWorkout;
 
+		res.status(200).send();
 		res.end();
 		workoutIdCtr++;
 	})
@@ -99,6 +103,60 @@ app.route('/users/:userId/workouts')
 		console.log(users[req.params.userId].workouts);
 		res.end();
 	})
+  
+app.route('/users/:userId/caloricCount/')
+  .put(function (req, res) {
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    //if statements to calc for male or female
+    //Males equation: 66.4730 + (13.7516 x weight in kg) + (5.0033 x height in cm)
+    //Females equation: 655.0955 + (9.5634 x weight in kg) + (1.8496 x height in cm)
+    
+    var cals = req.body.actual;
+    var id = req.params.userId - 1;
+    var goalCals = users[id].weight * users[id].height; 
+    var actualCals = cals + users[id].caloricCount.actual;
+    
+    users[id].caloricCount.actual = actualCals;
+    users[id].caloricCount.goal = goalCals;
+    res.end();
+    console.log(users[id]);
+  })
+
+app.route('/users/:userId/weights/')
+  .post(function (req, res) {
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    var date = req.body.date;
+    var weight = req.body.weight;
+    var id = req.params.userId - 1;
+    console.log(users[id].weights);
+    users[id].weights.push({date, weight});
+    res.end();
+    console.log(users[id]);
+  })
+
+app.route('/users/:userId/stats/')
+  .put(function (req, res) {
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    var bench = req.body.bench;
+    var overheadpress = req.body.overheadpress;
+    var deadlift = req.body.deadlift;
+    var squats = req.body.squats;
+    var id = req.params.userId - 1;
+    
+    users[id].stats.bench = bench;
+    users[id].stats.overheadpress = overheadpress;
+    users[id].stats.deadlift = deadlift;
+    users[id].stats.squats = squats;
+    res.end();
+    
+    console.log(users[id]);
+  })
   
 app.route('/users/:userId/workouts/:workoutId')
 	.get(function(req, res){
@@ -158,7 +216,6 @@ app.route('/users/:userId/workouts/:workoutId/:exerciseName')
 		}
 	})
 
-
 //-----------------------------------------------------------------------
 var server = app.listen(8080, function () {
 
@@ -168,3 +225,5 @@ var server = app.listen(8080, function () {
   console.log("SWOLEMATE listening at http://%s:%s", host, port);
 
 });
+
+module.exports = app;
