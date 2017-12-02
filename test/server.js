@@ -25,6 +25,18 @@ describe('/POST /users', () => {
       });
  });
 
+describe('/GET /users', () => {
+  it('it should GET information for all users', (done) => {
+    chai.request(server)
+      .get('/users')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+
 describe('/GET /users/:userId', () => {
   it('it should GET relevant user information', (done) => {
     chai.request(server)
@@ -37,3 +49,38 @@ describe('/GET /users/:userId', () => {
       });
   });
 });
+
+describe('/DELETE /users/:userId', () => {
+  it('it should GET relevant user information', (done) => {
+    chai.request(server)
+      .delete('/users/0')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+
+describe('/POST /users/:userId/workouts', () => {
+      it('it should POST a new workout with exercises if applicable', (done) => {
+        var newWorkout = {
+        "name" : "Chest Workout",
+        "bench": {
+          "sets": 5,
+          "reps": 10
+        },
+        "flies": {
+          "sets": 5,
+          "reps": 10
+        }
+      };
+        chai.request(server)
+            .post('/users/0/workouts')
+            .send(newWorkout)
+            .end((err, res) => {
+                res.should.have.status(500);
+              done();
+            });
+      });
+ });

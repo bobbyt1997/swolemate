@@ -84,6 +84,7 @@ app.route('/users/:userId/workouts')
 
 		users[req.params.userId].workouts[workoutIdCtr] = newWorkout;
 
+		res.status(200).send();
 		res.end();
 		workoutIdCtr++;
 	})
