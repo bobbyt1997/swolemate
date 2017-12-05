@@ -113,6 +113,19 @@ describe('/PUT /users/:userId/caloricCount', () => {
       });
  });
 
+describe('/GET /users/:userId/caloricCount', () => {
+      it('it should GET caloric information', (done) => {
+        chai.request(server)
+            .get('/users/0/caloricCount')
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('object');
+              res.body.should.eql({"actual": 250, "goal": 66.473});
+              done();
+            });
+      });
+ });
+
 describe('/GET /users', () => {
   it('it should GET information for all users', (done) => {
     chai.request(server)
