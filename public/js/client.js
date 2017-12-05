@@ -30,15 +30,6 @@ $(document).ready(function () {
 
     });
 
-    function app() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/users/0',
-            success: function (res) {
-                console.log(res);
-            }
-        });
-    }
    
     
     // Make Workouts

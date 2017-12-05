@@ -5,6 +5,12 @@ body {
     background-color: #FFFAF0;
 }
 
+.col {
+}
+section {
+    padding: .5em;
+}
+
 #front-title {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
