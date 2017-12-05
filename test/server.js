@@ -221,6 +221,19 @@ describe('/GET /users/:userId/workouts/:workoutId', () => {
       });
   });
 }); 
+
+describe('/DELETE /users/:userId/workouts/:workoutId/:exerciseName', () => {
+  it('it should DELETE an exercise', (done) => {
+    chai.request(server)
+      .delete('/users/0/workouts/0/pushups')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+
 /*
 describe('/DELETE /users/:userId', () => {
   it('it should DELETE relevant user information', (done) => {
