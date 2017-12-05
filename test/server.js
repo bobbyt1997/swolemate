@@ -113,6 +113,19 @@ describe('/PUT /users/:userId/caloricCount', () => {
       });
  });
 
+describe('/GET /users/:userId/weights', () => {
+      it('it should GET caloric information', (done) => {
+        chai.request(server)
+            .get('/users/0/weights')
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.should.eql([{"date": "12/04/2017","weight": 0}]);
+              done();
+            });
+      });
+ });
+
 describe('/GET /users/:userId/caloricCount', () => {
       it('it should GET caloric information', (done) => {
         chai.request(server)
