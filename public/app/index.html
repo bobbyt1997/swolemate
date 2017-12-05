@@ -52,6 +52,11 @@
             <div class="col col-md-4">
                 <section>
                     <h2>Workouts</h2>
+                    <h3>My saved workouts:</h3>
+                    <div id="workouts"></div>
+
+                    <hr/>
+                    <h3>Create a new workout:</h3>
                     <div class="input-group">
                         <input id="input-weight" type="text" id="exercise-1" class="form-control" placeholder="Exercise 1">
                         <input id="input-weight" type="text" id="exercise-1-s" class="form-control" placeholder="Sets">
@@ -68,12 +73,15 @@
                         <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
                     </div>
                     <button type="button" id="create-workout-btn" class="btn btn-primary">Create New Workout</button>
+                
+
+                
                 </section>
             </div>
             <div class="col col-md-4">
                 <section>
                     <h2>Nutrition</h2>
-                    <h3>Calories</h3>
+                    <h3>Calorie Calculator</h3>
                     <div class="input-group">
                         <span class="input-group-addon">Weight (lbs)</span>
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
@@ -83,16 +91,21 @@
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
                     </div>
                     <button type="button" id="calculate-calories-btn" class="btn btn-primary">Calculate Calories</button>
-                
-                    <h3>Weight</h3>
+                    <div>My goal calories for today are:</div>
+                    <div id="calculated-calories"></div>
+                    <hr/>
+
+                    <h3>Weight Tracker</h3>
                     <div class="input-group">
                         <span class="input-group-addon">My weight today (lbs)</span>
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
                     </div>
                     <button type="button" id="calculate-calories-btn" class="btn btn-primary">Track Weight</button>
                     
+                    <div>Today's Weight:</div>
                     <div id="todays-weight"></div>
-                    <div id="previous-weights"></div>
+                    <div>My previous weight:</div>
+                    <div id="previous-weight"></div>
                 </section>
             </div>
         </div>
