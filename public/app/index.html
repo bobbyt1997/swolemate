@@ -79,22 +79,11 @@
                     <hr/>
                     <h3>Create a new workout:</h3>
                     <div class="input-group">
-                        <span class="input-group-addon">Exercise 1</span>
-                        <input id="input-weight" type="text" id="exercise-1" class="form-control" placeholder="Pushups">
-                        <input id="input-weight" type="text" id="exercise-1-s" class="form-control" placeholder="Sets">
-                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">Exercise 2</span>
-                        <input id="input-weight" type="text" id="exercise-2" class="form-control" placeholder="Squats">
-                        <input id="input-weight" type="text" id="exercise-2-s" class="form-control" placeholder="Sets">
-                        <input id="input-weight" type="text" id="exercise-2-r" class="form-control" placeholder="Reps">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">Exercise 3</span>
-                        <input id="input-weight" type="text" id="exercise-3" class="form-control" placeholder="Curls">
-                        <input id="input-weight" type="text" id="exercise-3-s" class="form-control" placeholder="Sets">
-                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
+                        <span class="input-group-addon">Add an exercise</span>
+                        <input type="text" id="exercise-workout" class="form-control" placeholder="Chest Day">
+                        <input type="text" id="exercise-name" class="form-control" placeholder="Pushups">
+                        <input type="text" id="exercise-s" class="form-control" placeholder="Sets">
+                        <input type="text" id="exercise-r" class="form-control" placeholder="Reps">
                     </div>
                     <button type="button" id="create-workout-btn" class="btn btn-primary">Create New Workout</button>
 
@@ -139,11 +128,6 @@
             success: function (user) {
                 console.log(user);
                 document.getElementById("name").innerHTML = user.name;
-                document.getElementById("stats-weight").innerHTML = user.weight;
-                document.getElementById("stats-ohp").innerHTML = user.stats.overheadpress;
-                document.getElementById("stats-bench").innerHTML = user.stats.bench;
-                document.getElementById("stats-squats").innerHTML = user.stats.squats;
-                document.getElementById("stats-deadlift").innerHTML = user.stats.deadlift;
             }
         });
     </script>
