@@ -143,7 +143,7 @@ app.route('/users/:userId/caloricCount')
     }
   })
 
-app.route('/users/:userId/weights/')
+app.route('/users/:userId/weights')
   .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -201,11 +201,10 @@ app.route('/users/:userId/stats')
       users[id].stats.overheadpress = overheadpress;
       users[id].stats.deadlift = deadlift;
       users[id].stats.squats = squats;
-    }
+  }
 
     res.end();
     console.log(users[id]);
-    }
   })
   
 app.route('/users/:userId/workouts/:workoutId')
