@@ -125,8 +125,8 @@ app.route('/users/:userId/caloricCount')
       res.header("Content-Type", "application/json");
       res.status(200);
       
-      var cals = req.body.actual;
-      var actualCals = cals + users[id].caloricCount.actual;
+      var cals = Number(req.body.actual);
+      var actualCals = cals + Number(users[id].caloricCount.actual);
       
       var weight = users[id].weight * 0.453592;
       var height = users[id].height * 2.54;
@@ -164,6 +164,7 @@ app.route('/users/:userId/weights')
       res.header("Content-Type", "application/json");
       res.status(200);
       
+      console.log(req.body);
       var date = req.body.date;
       var weight = req.body.weight;
       users[id].weights.push({date, weight});
@@ -188,7 +189,7 @@ app.route('/users/:userId/stats')
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
 		}
-	else {
+    else {
       res.header("Content-Type"	, "application/json");
       res.status(200);
       
@@ -203,8 +204,7 @@ app.route('/users/:userId/stats')
       users[id].stats.squats = squats;
   }
 
-    res.end();
-    console.log(users[id]);
+    res.json(users[id].stats);
   })
   
 app.route('/users/:userId/workouts/:workoutId')

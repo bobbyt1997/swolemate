@@ -48,7 +48,7 @@ $(document).ready(function () {
     });
     
     // Enter Calories & Calories Counter
-    $("#calculate-calories-btn"").on('click', function () {
+    $("#calculate-calories-btn").on('click', function () {
         var calories = {};
 
         calories.actual= $("#input-actual").val();
@@ -71,7 +71,7 @@ $(document).ready(function () {
         var bodyWeight = {};
         
         bodyWeight.date = $("#input-date").val();
-        bodyWeight.weight = $("#input-weight").val();
+        bodyWeight.weight = $("#set-weight").val();
 
         $.ajax({
             type: 'POST',
@@ -97,10 +97,11 @@ $(document).ready(function () {
         
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/users/0/stats/',
+            url: 'http://localhost:8080/users/0/stats',
             data: stats,
             success: function (res) {
                 console.log('success');
+                console.log(res);
             },
             error: function(res) {
                 console.log('failure');
