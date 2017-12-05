@@ -28,31 +28,52 @@
 </head>
 
 <body>
-    
+
 
     <div class="container">
         <div class="row">
 
             <div class="col col-md-4">
-                <h1>Welcome to Swolemate, <span id="name"></span>!</h1>
+                <h1>Welcome to Swolemate,
+                    <span id="name"></span>!</h1>
                 <img class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/066/072/3ff4aa4.jpg">
-                
+
                 <div>My stats:</div>
-                <div>OHP: <span id="stats-ohp"></span> lbs</div>
-                <div>Bench: <span id="stats-bench"></span> lbs</div>
-                <div>Squats: <span id="stats-squats"></span> lbs</div>
-                <div>Deadlift: <span id="stats-deadlift"></span> lbs</div>
+                <div>OHP:
+                    <span id="stats-ohp"></span> lbs</div>
+                <div>Bench:
+                    <span id="stats-bench"></span> lbs</div>
+                <div>Squats:
+                    <span id="stats-squats"></span> lbs</div>
+                <div>Deadlift:
+                    <span id="stats-deadlift"></span> lbs</div>
                 <button type="button" id="update-stats-btn" class="btn btn-primary">Update Stats</button>
             </div>
             <div class="col col-md-4">
                 <section>
                     <h2>Workouts</h2>
-                    <button type="button" id="create-workout-btn" class="btn btn-primary">Create a Workout</button>
+                    <div class="input-group">
+                        <input id="input-weight" type="text" id="exercise-1" class="form-control" placeholder="Exercise 1">
+                        <input id="input-weight" type="text" id="exercise-1-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <div class="input-group">
+                        <input id="input-weight" type="text" id="exercise-2" class="form-control" placeholder="Exercise 2">
+                        <input id="input-weight" type="text" id="exercise-2-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-2-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <div class="input-group">
+                        <input id="input-weight" type="text" id="exercise-3" class="form-control" placeholder="Exercise 3">
+                        <input id="input-weight" type="text" id="exercise-3-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <button type="button" id="create-workout-btn" class="btn btn-primary">Create New Workout</button>
                 </section>
             </div>
             <div class="col col-md-4">
                 <section>
-                    <h2>Diet</h2>
+                    <h2>Nutrition</h2>
+                    <h3>Calories</h3>
                     <div class="input-group">
                         <span class="input-group-addon">Weight (lbs)</span>
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
@@ -62,6 +83,16 @@
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
                     </div>
                     <button type="button" id="calculate-calories-btn" class="btn btn-primary">Calculate Calories</button>
+                
+                    <h3>Weight</h3>
+                    <div class="input-group">
+                        <span class="input-group-addon">My weight today (lbs)</span>
+                        <input id="input-weight" type="text" class="form-control" placeholder="180">
+                    </div>
+                    <button type="button" id="calculate-calories-btn" class="btn btn-primary">Track Weight</button>
+                    
+                    <div id="todays-weight"></div>
+                    <div id="previous-weights"></div>
                 </section>
             </div>
         </div>
