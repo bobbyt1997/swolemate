@@ -79,13 +79,13 @@ app.route('/users/:userId')
 
 app.route('/users/:userId/workouts')
 	.post(function (req, res){
-		
-		users[req.params.userId].workouts[workoutIdCtr] = req.body;
-		console.log(users[req.params.userId].workouts[workoutIdCtr]);
-
-		workoutIdCtr++;
-		
-		res.end();
+    
+		users[req.params.userId].workouts.day = req.body.workoutDay;
+    users[req.params.userId].workouts.name = req.body.workoutName;
+    users[req.params.userId].workouts.sets = req.body.workoutSets;
+    users[req.params.userId].workouts.reps = req.body.workoutReps;
+    
+		res.json(users[req.params.userId].workouts);
 		
 	})
 	.get(function (req, res){
