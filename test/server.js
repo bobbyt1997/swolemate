@@ -48,6 +48,22 @@ describe('/POST /users/:userId/workouts', () => {
       });
  });
 
+describe('/POST /users/:userId/weights/', () => {
+      it('it should POST a new weight change', (done) => {
+        var newWeight = {
+          "date": "12/04/2017",
+          "weight": 0
+        }
+        chai.request(server)
+            .post('/users/0/weights')
+            .send(newWeight)
+            .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+ });
+
 describe('/GET /users', () => {
   it('it should GET information for all users', (done) => {
     chai.request(server)
@@ -85,7 +101,10 @@ describe('/GET /users/:userId', () => {
       "flies": {"sets": 5,"reps": 10}
     }
   },
-  "weights":[],
+  "weights":[{
+          "date": "12/04/2017",
+          "weight": 0
+        }],
   "caloricCount":{
     "actual":0,
     "goal":0}
