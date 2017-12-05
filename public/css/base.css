@@ -5,8 +5,10 @@ body {
     background-color: #FFFAF0;
 }
 
+.col {
+}
 section {
-    border: solid 2px black;
+    padding: .5em;
 }
 
 #front-title {
