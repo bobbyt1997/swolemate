@@ -45,8 +45,8 @@ app.route('/users')
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
   		
-		res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
-
+		//res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
+		   res.json(users[userIdCtr]);
   	userIdCtr++;
   	})
   	.get(function (req, res){

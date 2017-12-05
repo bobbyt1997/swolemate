@@ -30,6 +30,18 @@
 <body>
     <h1>App page</h1>
     <h2>Workout Data</h2>
+    <div>NAME: <span id="name"></span></div>
+
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/users/0',
+            success: function (user) {
+                console.log(user);
+                document.getElementById("name").innerHTML = user.name;
+            }
+        });
+    </script>
 </body>
 
 </html>
