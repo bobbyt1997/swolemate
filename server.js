@@ -28,7 +28,7 @@ app.route('/users')
           "squats" : 0
         },
     		"workouts" : {},
-    		"weights" : [],
+    		"weights" : {},
     		"caloricCount" : {
           "actual" : 0,
           "goal" : 0
@@ -167,7 +167,8 @@ app.route('/users/:userId/weights')
       console.log(req.body);
       var date = req.body.date;
       var weight = req.body.weight;
-      users[id].weights.push({date, weight});
+      users[id].weights.date = date;
+      users[id].weights.weight = weight;
       res.json(users[id].weights);
     }
   })
