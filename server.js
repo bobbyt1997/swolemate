@@ -201,7 +201,7 @@ app.route('/users/:userId/stats')
       users[id].stats.overheadpress = overheadpress;
       users[id].stats.deadlift = deadlift;
       users[id].stats.squats = squats;
-    }
+  }
 
     res.end();
     console.log(users[id]);
