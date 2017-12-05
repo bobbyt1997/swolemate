@@ -30,9 +30,10 @@ $(document).ready(function () {
     $("#create-workout-btn").on('click', function () {
       var workout = {};
       
-      workout.workoutName = $("#exercise-1").val();
-      workout.workoutSets = $("#exercise-1-s").val();
-      workout.workoutReps = $("#exercise-1-r").val();
+      workout.workoutDay = $("#exercise-workout").val();
+      workout.workoutName = $("#exercise-name").val();
+      workout.workoutSets = $("#exercise-s").val();
+      workout.workoutReps = $("#exercise-r").val();
       
       $.ajax({
           type: 'POST',
@@ -40,6 +41,14 @@ $(document).ready(function () {
           data: workout,
           success: function (res) {
               console.log('success');
+              var $newWorkout = $("<h1>").text(res.day);
+              var $newName = $("<p>").text("Workout: " + res.name);
+              var $newSets = $("<p>").text("Sets: " + res.sets);
+              var $newReps = $("<p>").text("Reps: " + res.reps);
+              $("#workouts").append($newWorkout);
+              $("#workouts").append($newName);
+              $("#workouts").append($newSets);
+              $("#workouts").append($newReps);
           },
           error: function(res) {
               console.log('failure');

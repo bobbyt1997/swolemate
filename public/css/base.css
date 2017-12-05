@@ -5,10 +5,38 @@ body {
     background-color: #FFFAF0;
 }
 
-.col {
-}
 section {
     padding: .5em;
+}
+
+footer {
+    text-align: center;
+}
+
+#welcome {
+    font-size: 2.4em;
+}
+
+.app h2 {
+    text-decoration: underline;
+}
+
+.app h3 {
+    font-size: 1.7em;
+}
+
+.app .weight-data {
+    margin-top: 1em;
+    font-size: 1.3em;
+}
+
+.app .calorie-data {
+    margin-top: 1em;
+    font-size: 1.3em;
+}
+
+.app .stat {
+    font-size: 1.5em;
 }
 
 #front-title {
