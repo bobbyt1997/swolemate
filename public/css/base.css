@@ -5,6 +5,10 @@ body {
     background-color: #FFFAF0;
 }
 
+section {
+    border: solid 2px black;
+}
+
 #front-title {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
