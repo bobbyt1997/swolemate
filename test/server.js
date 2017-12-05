@@ -132,8 +132,8 @@ describe('/GET /users/:userId/weights', () => {
             .get('/users/0/weights')
             .end((err, res) => {
               res.should.have.status(200);
-              res.body.should.be.a('array');
-              res.body.should.eql([{"date": "12/04/2017","weight": 0}]);
+              res.body.should.be.a('object');
+              res.body.should.eql({"date": "12/04/2017","weight": 0});
               done();
             });
       });
@@ -190,13 +190,14 @@ describe('/GET /users/:userId', () => {
       "pushups": {"sets": 5, "reps": 10}
     },
   },
-  "weights":[{
+  "weights":{
           "date": "12/04/2017",
           "weight": 0
-        }],
+    },
   "caloricCount":{
     "actual":250,
-    "goal":66.473}
+    "goal":66.473
+    }
 });
         done();
       });

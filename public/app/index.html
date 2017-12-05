@@ -28,32 +28,104 @@
 </head>
 
 <body>
-    
+
 
     <div class="container">
         <div class="row">
 
             <div class="col col-md-4">
-                <h1>Welcome to Swolemate, <span id="name"></span>!</h1>
+                <h1>Welcome to Swolemate,
+                    <span id="name"></span>!</h1>
                 <img class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/066/072/3ff4aa4.jpg">
-                
-                <div>My stats:</div>
-                <div>Weight: <span id="stats-weight"></span> lbs</div>
-                <div>OHP: <span id="stats-ohp"></span> lbs</div>
-                <div>Bench: <span id="stats-bench"></span> lbs</div>
-                <div>Squats: <span id="stats-squats"></span> lbs</div>
-                <div>Deadlift: <span id="stats-deadlift"></span> lbs</div>
+
+                <h3>My main lift stats:</h3>
+                <div>OHP:
+                    <span id="stats-ohp"></span> lbs</div>
+                <div>Bench:
+                    <span id="stats-bench"></span> lbs</div>
+                <div>Squats:
+                    <span id="stats-squats"></span> lbs</div>
+                <div>Deadlift:
+                    <span id="stats-deadlift"></span> lbs</div>
+
+                <hr/>
+
+                <h3>Update my stats:</h3>
+                <div class="input-group">
+                    <span class="input-group-addon">OHP</span>
+                    <input type="text" id="ohp-stat-input" class="form-control" placeholder="135">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Bench Press</span>
+                    <input type="text" id="bench-stat-input" class="form-control" placeholder="225">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Squat</span>
+                    <input type="text" id="squat-stat-input" class="form-control" placeholder="315">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Deadlift</span>
+                    <input type="text" id="deadlift-stat-input" class="form-control" placeholder="405">
+                </div>
+                <button type="button" id="update-stats-btn" class="btn btn-primary">Update Stats</button>
+
             </div>
             <div class="col col-md-4">
                 <section>
                     <h2>Workouts</h2>
-                    <button type="button" class="btn btn-primary">Create a Workout</button>
+                    <h3>My saved workouts:</h3>
+                    <div id="workouts"></div>
+
+                    <hr/>
+                    <h3>Create a new workout:</h3>
+                    <div class="input-group">
+                        <span class="input-group-addon">Exercise 1</span>
+                        <input id="input-weight" type="text" id="exercise-1" class="form-control" placeholder="Pushups">
+                        <input id="input-weight" type="text" id="exercise-1-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">Exercise 2</span>
+                        <input id="input-weight" type="text" id="exercise-2" class="form-control" placeholder="Squats">
+                        <input id="input-weight" type="text" id="exercise-2-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-2-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">Exercise 3</span>
+                        <input id="input-weight" type="text" id="exercise-3" class="form-control" placeholder="Curls">
+                        <input id="input-weight" type="text" id="exercise-3-s" class="form-control" placeholder="Sets">
+                        <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
+                    </div>
+                    <button type="button" id="create-workout-btn" class="btn btn-primary">Create New Workout</button>
+
+
+
                 </section>
             </div>
             <div class="col col-md-4">
                 <section>
-                    <h2>Diet</h2>
-                    <button type="button" class="btn btn-primary">Calculate Calories</button>
+                    <h2>Nutrition</h2>
+                    <h3>Calorie Calculator</h3>
+                    <div class="input-group">
+                        <span class="input-group-addon">How much I've eaten (calories)</span>
+                        <input id="input-actual" type="text" class="form-control" placeholder="180">
+                    </div>
+                    <button type="button" id="calculate-calories-btn" class="btn btn-primary">Calculate Calories</button>
+                    <div>I've eaten this many calories: <span id="howmuch"></span> </div>
+                    <div>My goal calories for today are: <span id="goals"></span> </div>
+                    <hr/>
+
+                    <h3>Weight Tracker</h3>
+                    <div class="input-group">
+                        <span class="input-group-addon">Date</span>
+                        <input id="input-date" type="text" class="form-control" placeholder="10/12">
+                        <span class="input-group-addon">Weight (lbs)</span>
+                        <input id="set-weight" type="text" class="form-control" placeholder="180">
+                    </div>
+                    <button type="button" id="weight-btn" class="btn btn-primary">Track Weight</button>
+
+                    <div>Today's Weight:</div>
+                    <div id="todays-weight"></div>
                 </section>
             </div>
         </div>

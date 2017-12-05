@@ -2,7 +2,6 @@ $(document).ready(function () {
     // Sign up button
     $("#getSwole").on('click', function () {
         var user = {};
-
         user.name = $("#input-name").val();
         user.weight = $("#input-weight").val();
         user.height = $("#input-height").val();
@@ -11,7 +10,6 @@ $(document).ready(function () {
         } else {
             user.sex = "female";
         }
-        console.log(user);
 
         $.ajax({
             type: 'POST',
@@ -19,7 +17,6 @@ $(document).ready(function () {
             data: user,
             success: function (res) {
                 console.log('success');
-                
                 window.location.assign('/app');
                 app(res);
             },
@@ -28,14 +25,14 @@ $(document).ready(function () {
             }
         });
     });
-
-   
     
     // Make Workouts
-    $("#makeWorkouts").on('click', function () {
+    $("#create-workout-btn").on('click', function () {
       var workout = {};
       
-      workout.newWorkout = $("#input-newWorkout").val();
+      workout.workoutName = $("#exercise-1").val();
+      workout.workoutSets = $("#exercise-1-s").val();
+      workout.workoutReps = $("#exercise-1-r").val();
       
       $.ajax({
           type: 'POST',
@@ -51,11 +48,10 @@ $(document).ready(function () {
     });
     
     // Enter Calories & Calories Counter
-    $("#calories").on('click', function () {
+    $("#calculate-calories-btn").on('click', function () {
         var calories = {};
 
         calories.actual= $("#input-actual").val();
-        calories.goal = $("#input-goal").val();
 
         $.ajax({
             type: 'PUT',
@@ -63,6 +59,8 @@ $(document).ready(function () {
             data: calories,
             success: function (res) {
                 console.log('success');
+                document.getElementById("howmuch").innerHTML = res.actual;
+                document.getElementById("goals").innerHTML = Math.round(res.goal);
             },
             error: function(res) {
                 console.log('failure');
@@ -71,11 +69,11 @@ $(document).ready(function () {
     });
     
     // Weight Tracker
-    $("#weight").on('click', function () {
+    $("#weight-btn").on('click', function () {
         var bodyWeight = {};
         
         bodyWeight.date = $("#input-date").val();
-        bodyWeight.weight = $("#input-weight").val();
+        bodyWeight.weight = $("#set-weight").val();
 
         $.ajax({
             type: 'POST',
@@ -83,6 +81,8 @@ $(document).ready(function () {
             data: bodyWeight,
             success: function (res) {
                 console.log('success');
+                var $log = $("<p>").text("Date: " + res.date + "  Weight: " + res.weight);
+                $("#todays-weight").append($log);
             },
             error: function(res) {
                 console.log('failure');
@@ -91,20 +91,24 @@ $(document).ready(function () {
     });
     
     // Stats for weights
-    $("#getSwole").on('click', function () {
+    $("#update-stats-btn").on('click', function () {
         var stats = {};
         
-        stats.bench = $("#input-bench").val();
-        stats.overheadpress = $("#input-overheadpress").val();
-        stats.deadlift = $("#input-deadlift").val();
-        stats.squats = $("#input-squats").val();
+        stats.bench = $("#bench-stat-input").val();
+        stats.overheadpress = $("#ohp-stat-input").val();
+        stats.deadlift = $("#deadlift-stat-input").val();
+        stats.squats = $("#squat-stat-input").val();
         
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/users/0/stats/',
+            url: 'http://localhost:8080/users/0/stats',
             data: stats,
             success: function (res) {
                 console.log('success');
+                document.getElementById("stats-bench").innerHTML = res.bench;
+                document.getElementById("stats-ohp").innerHTML = res.overheadpress;
+                document.getElementById("stats-deadlift").innerHTML = res.deadlift;
+                document.getElementById("stats-squats").innerHTML = res.squats;
             },
             error: function(res) {
                 console.log('failure');
