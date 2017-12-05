@@ -64,6 +64,8 @@ app.route('/users/:userId')
 			users[req.params.userId]);
 			res.json(users[req.params.userId]);
 		}
+
+		console.log(JSON.stringify(users[req.params.userId]));
 	})
 	.delete(function (req, res){
 		if(users[req.params.userId] == 'undefined' ||
