@@ -64,6 +64,22 @@ describe('/POST /users/:userId/weights/', () => {
       });
  });
 
+describe('/POST /users/:userId/workouts/:workoutId/:exerciseName', () => {
+      it('it should POST a new exercise', (done) => {
+        var newObject = {
+          "sets": 5,
+          "reps": 10
+        }
+        chai.request(server)
+            .post('/users/0/workouts/0/pushups')
+            .send(newObject)
+            .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+ });
+
 describe('/GET /users', () => {
   it('it should GET information for all users', (done) => {
     chai.request(server)
@@ -98,8 +114,9 @@ describe('/GET /users/:userId', () => {
     "0":{
       "name" : "Chest Workout",
       "bench": {"sets": 5,"reps": 10},
-      "flies": {"sets": 5,"reps": 10}
-    }
+      "flies": {"sets": 5,"reps": 10},
+      "pushups": {"sets": 5, "reps": 10}
+    },
   },
   "weights":[{
           "date": "12/04/2017",
@@ -128,6 +145,10 @@ describe('/GET /users/:userId/workouts/:workoutId', () => {
           "reps": 10
         },
         "flies": {
+          "sets": 5,
+          "reps": 10
+        },
+        "pushups": {
           "sets": 5,
           "reps": 10
         }
