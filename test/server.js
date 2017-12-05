@@ -234,10 +234,22 @@ describe('/DELETE /users/:userId/workouts/:workoutId/:exerciseName', () => {
   });
 });
 
-describe('/DELETE /users/:userId/workouts/:workoutId', () => {
+describe('/DELETE /users/:userId/workouts/:workoutId ', () => {
   it('it should DELETE an entire workout', (done) => {
     chai.request(server)
       .delete('/users/0/workouts/0')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+
+describe('/DELETE /users/:userId/workouts ', () => {
+  it('it should DELETE all of a user\'s workouts', (done) => {
+    chai.request(server)
+      .delete('/users/0/workouts')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
