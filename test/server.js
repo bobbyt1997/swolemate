@@ -98,6 +98,21 @@ describe('/PUT /users/:userId/stats', () => {
       });
  });
 
+describe('/PUT /users/:userId/caloricCount', () => {
+      it('it should PUT or add a new calorie intake amount for specified user and calculate the goal', (done) => {
+        var actual = {
+          "actual":250
+        }
+        chai.request(server)
+            .put('/users/0/caloricCount')
+            .send(actual)
+            .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+ });
+
 describe('/GET /users', () => {
   it('it should GET information for all users', (done) => {
     chai.request(server)
@@ -141,8 +156,8 @@ describe('/GET /users/:userId', () => {
           "weight": 0
         }],
   "caloricCount":{
-    "actual":0,
-    "goal":0}
+    "actual":250,
+    "goal":66.473}
 });
         done();
       });

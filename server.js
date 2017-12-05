@@ -105,7 +105,7 @@ app.route('/users/:userId/workouts')
 		res.end();
 	})
   
-app.route('/users/:userId/caloricCount/')
+app.route('/users/:userId/caloricCount')
   .put(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -131,8 +131,10 @@ app.route('/users/:userId/caloricCount/')
       users[id].caloricCount.goal = goalCals;
       res.end();
     }
+    /*
     res.header("Content-Type", "application/json");
     res.status(200);
+    
     
     var cals = req.body.actual;
     var id = req.params.userId - 1;
@@ -141,7 +143,7 @@ app.route('/users/:userId/caloricCount/')
     
     users[id].caloricCount.actual = actualCals;
     users[id].caloricCount.goal = goalCals;
-    res.end();
+    res.end();*/
     console.log(users[id]);
   })
 
