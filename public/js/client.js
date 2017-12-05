@@ -27,23 +27,27 @@ $(document).ready(function () {
                 console.log('failure');
             }
         });
-
     });
 
-    function app() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/users/0',
-            success: function (res) {
-                console.log(res);
-            }
-        });
-    }
    
     
     // Make Workouts
     $("#makeWorkouts").on('click', function () {
-        
+      var workout = {};
+      
+      workout.newWorkout = $("#input-newWorkout").val();
+      
+      $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8080/users/0/workouts/',
+          data: workout,
+          success: function (res) {
+              console.log('success');
+          },
+          error: function(res) {
+              console.log('failure');
+          }
+      });
     });
     
     // Enter Calories & Calories Counter
@@ -55,10 +59,8 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/users/:userId/caloricCount/',
-            dataType: 'application/json',
+            url: 'http://localhost:8080/users/0/caloricCount/',
             data: calories,
-            dataType: "json",
             success: function (res) {
                 console.log('success');
             },
@@ -77,10 +79,8 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/users/:userId/weights/',
-            dataType: 'application/json',
+            url: 'http://localhost:8080/users/0/weights/',
             data: bodyWeight,
-            dataType: "json",
             success: function (res) {
                 console.log('success');
             },
@@ -91,7 +91,6 @@ $(document).ready(function () {
     });
     
     // Stats for weights
-    /*
     $("#getSwole").on('click', function () {
         var stats = {};
         
@@ -102,10 +101,8 @@ $(document).ready(function () {
         
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/users/:userId/stats/',
-            dataType: 'application/json',
+            url: 'http://localhost:8080/users/0/stats/',
             data: stats,
-            dataType: "json",
             success: function (res) {
                 console.log('success');
             },
@@ -114,5 +111,4 @@ $(document).ready(function () {
             }
         });
     });
-    */
 })

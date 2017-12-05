@@ -28,9 +28,37 @@
 </head>
 
 <body>
-    <h1>App page</h1>
-    <h2>Workout Data</h2>
-    <div>NAME: <span id="name"></span></div>
+    
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col col-md-4">
+                <h1>Welcome to Swolemate, <span id="name"></span>!</h1>
+                <img class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/066/072/3ff4aa4.jpg">
+                
+                <div>My stats:</div>
+                <div>Weight: <span id="stats-weight"></span> lbs</div>
+                <div>OHP: <span id="stats-ohp"></span> lbs</div>
+                <div>Bench: <span id="stats-bench"></span> lbs</div>
+                <div>Squats: <span id="stats-squats"></span> lbs</div>
+                <div>Deadlift: <span id="stats-deadlift"></span> lbs</div>
+            </div>
+            <div class="col col-md-4">
+                <section>
+                    <h2>Workouts</h2>
+                    <button type="button" class="btn btn-primary">Create a Workout</button>
+                </section>
+            </div>
+            <div class="col col-md-4">
+                <section>
+                    <h2>Diet</h2>
+                    <button type="button" class="btn btn-primary">Calculate Calories</button>
+                </section>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         $.ajax({
@@ -39,6 +67,11 @@
             success: function (user) {
                 console.log(user);
                 document.getElementById("name").innerHTML = user.name;
+                document.getElementById("stats-weight").innerHTML = user.weight;
+                document.getElementById("stats-ohp").innerHTML = user.stats.overheadpress;
+                document.getElementById("stats-bench").innerHTML = user.stats.bench;
+                document.getElementById("stats-squats").innerHTML = user.stats.squats;
+                document.getElementById("stats-deadlift").innerHTML = user.stats.deadlift;
             }
         });
     </script>
