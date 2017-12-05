@@ -63,6 +63,8 @@ app.route('/users/:userId')
 			users[req.params.userId]);
 			res.json(users[req.params.userId]);
 		}
+
+		console.log(JSON.stringify(users[req.params.userId]));
 	})
 	.delete(function (req, res){
 		if(users[req.params.userId] == 'undefined' ||
@@ -77,22 +79,21 @@ app.route('/users/:userId')
 
 app.route('/users/:userId/workouts')
 	.post(function (req, res){
-		var newWorkout = {};
+		
+		users[req.params.userId].workouts[workoutIdCtr] = req.body;
+		console.log(users[req.params.userId].workouts[workoutIdCtr]);
 
-		newWorkout = req.body;
-
-		users[req.params.userId].workouts[workoutIdCtr] = newWorkout;
-
-		res.status(200).send();
-		res.end();
 		workoutIdCtr++;
+		
+		res.end();
+		
 	})
 	.get(function (req, res){
 		if(users[req.params.userId].workouts == 'undefined' || 
 			users[req.params.userId].workouts == null){
 			res.status(404).send("ERROR 404: ID not found");
 		}
-		else{
+		else {
 			res.json(users[req.params.userId].workouts);
 			console.log(users[req.params.userId].workouts);
 		}
@@ -103,7 +104,7 @@ app.route('/users/:userId/workouts')
 		res.end();
 	})
   
-app.route('/users/:userId/caloricCount/')
+app.route('/users/:userId/caloricCount')
   .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -170,7 +171,7 @@ app.route('/users/:userId/weights/')
     }
   })
 
-app.route('/users/:userId/stats/')
+app.route('/users/:userId/stats')
   .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -187,8 +188,8 @@ app.route('/users/:userId/stats/')
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
 		}
-		else {
-      res.header("Content-Type", "application/json");
+	else {
+      res.header("Content-Type"	, "application/json");
       res.status(200);
       
       var bench = req.body.bench;
@@ -200,7 +201,10 @@ app.route('/users/:userId/stats/')
       users[id].stats.overheadpress = overheadpress;
       users[id].stats.deadlift = deadlift;
       users[id].stats.squats = squats;
-      res.json(users[id].stats);
+    }
+
+    res.end();
+    console.log(users[id]);
     }
   })
   
