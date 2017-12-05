@@ -78,12 +78,13 @@ app.route('/users/:userId')
 
 app.route('/users/:userId/workouts')
 	.post(function (req, res){
-		console.log(users[req.params.userId].workouts[workoutIdCtr]);
+		
 		users[req.params.userId].workouts[workoutIdCtr] = req.body;
 		console.log(users[req.params.userId].workouts[workoutIdCtr]);
 
-		res.status(200).end();
 		workoutIdCtr++;
+		
+		res.end();
 		
 	})
 	.get(function (req, res){
