@@ -38,7 +38,7 @@
                     <span id="name"></span>!</h1>
                 <img class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/066/072/3ff4aa4.jpg">
 
-                <div>My stats:</div>
+                <h3>My main lift stats:</h3>
                 <div>OHP:
                     <span id="stats-ohp"></span> lbs</div>
                 <div>Bench:
@@ -47,7 +47,28 @@
                     <span id="stats-squats"></span> lbs</div>
                 <div>Deadlift:
                     <span id="stats-deadlift"></span> lbs</div>
+
+                <hr/>
+
+                <h3>Update my stats:</h3>
+                <div class="input-group">
+                    <span class="input-group-addon">OHP</span>
+                    <input id="input-weight" type="text" id="ohp-stat-input" class="form-control" placeholder="135">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Bench Press</span>
+                    <input id="input-weight" type="text" id="bench-stat-input" class="form-control" placeholder="225">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Squat</span>
+                    <input id="input-weight" type="text" id="squat-stat-input" class="form-control" placeholder="315">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Deadlift</span>
+                    <input id="input-weight" type="text" id="deadlift-stat-input" class="form-control" placeholder="405">
+                </div>
                 <button type="button" id="update-stats-btn" class="btn btn-primary">Update Stats</button>
+
             </div>
             <div class="col col-md-4">
                 <section>
@@ -76,9 +97,9 @@
                         <input id="input-weight" type="text" id="exercise-1-r" class="form-control" placeholder="Reps">
                     </div>
                     <button type="button" id="create-workout-btn" class="btn btn-primary">Create New Workout</button>
-                
 
-                
+
+
                 </section>
             </div>
             <div class="col col-md-4">
@@ -104,7 +125,7 @@
                         <input id="input-weight" type="text" class="form-control" placeholder="180">
                     </div>
                     <button type="button" id="calculate-calories-btn" class="btn btn-primary">Track Weight</button>
-                    
+
                     <div>Today's Weight:</div>
                     <div id="todays-weight"></div>
                     <div>My previous weight:</div>
