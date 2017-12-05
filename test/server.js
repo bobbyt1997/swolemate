@@ -258,7 +258,6 @@ describe('/DELETE /users/:userId/workouts ', () => {
   });
 });
 
-/*
 describe('/DELETE /users/:userId', () => {
   it('it should DELETE relevant user information', (done) => {
     chai.request(server)
@@ -269,4 +268,4 @@ describe('/DELETE /users/:userId', () => {
         done();
       });
   });
-});*/
+});
