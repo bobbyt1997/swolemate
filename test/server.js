@@ -113,6 +113,19 @@ describe('/PUT /users/:userId/caloricCount', () => {
       });
  });
 
+describe('/GET /users/:userId/stats', () => {
+      it('it should GET caloric information', (done) => {
+        chai.request(server)
+            .get('/users/0/stats')
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('object');
+              res.body.should.eql({"bench": 1,"overheadpress": 1,"deadlift": 1,"squats": 1});
+              done();
+            });
+      });
+ });
+
 describe('/GET /users/:userId/weights', () => {
       it('it should GET caloric information', (done) => {
         chai.request(server)
