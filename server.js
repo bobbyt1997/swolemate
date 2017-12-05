@@ -28,7 +28,7 @@ app.route('/users')
           "squats" : 0
         },
     		"workouts" : {},
-    		"weights" : {},
+    		"weights" : [],
     		"caloricCount" : {
           "actual" : 0,
           "goal" : 0
@@ -45,9 +45,9 @@ app.route('/users')
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
   		
-		res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
-  		
-  		userIdCtr++;
+		//res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
+		   res.json(users[userIdCtr]);
+  	userIdCtr++;
   	})
   	.get(function (req, res){
   		res.json(users);
@@ -102,6 +102,113 @@ app.route('/users/:userId/workouts')
 		console.log(users[req.params.userId].workouts);
 		res.end();
 	})
+  
+app.route('/users/:userId/caloricCount/')
+  .put(function (req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else {
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      
+      var cals = req.body.actual;
+      var actualCals = cals + users[id].caloricCount.actual;
+      
+      var weight = users[id].weight * 0.453592;
+      var height = users[id].height * 2.54;
+      if(users[id].sex === "male") {
+        var goalCals = 66.4730 + (13.7516 * weight) + (5.0033 * height);
+      }
+      else {
+        var goalCals = 655.0955 + (9.5634 * weight) + (1.8496 * height);
+      }
+      
+      users[id].caloricCount.actual = actualCals;
+      users[id].caloricCount.goal = goalCals;
+      res.end();
+    }
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    var cals = req.body.actual;
+    var id = req.params.userId - 1;
+    var goalCals = users[id].weight * users[id].height; 
+    var actualCals = cals + users[id].caloricCount.actual;
+    
+    users[id].caloricCount.actual = actualCals;
+    users[id].caloricCount.goal = goalCals;
+    res.end();
+    console.log(users[id]);
+  })
+
+app.route('/users/:userId/weights/')
+  .post(function (req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else {
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      
+      var date = req.body.date;
+      var weight = req.body.weight;
+      users[id].weights.push({date, weight});
+      res.end();
+    }
+
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    var date = req.body.date;
+    var weight = req.body.weight;
+    var id = req.params.userId - 1;
+    console.log(users[id].weights);
+    users[id].weights.push({date, weight});
+    res.end();
+    console.log(users[id]);
+  })
+
+app.route('/users/:userId/stats/')
+  .put(function (req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else {
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      
+      var bench = req.body.bench;
+      var overheadpress = req.body.overheadpress;
+      var deadlift = req.body.deadlift;
+      var squats = req.body.squats;
+      
+      users[id].stats.bench = bench;
+      users[id].stats.overheadpress = overheadpress;
+      users[id].stats.deadlift = deadlift;
+      users[id].stats.squats = squats;
+      res.end();
+    }
+    res.header("Content-Type", "application/json");
+    res.status(200);
+    
+    var bench = req.body.bench;
+    var overheadpress = req.body.overheadpress;
+    var deadlift = req.body.deadlift;
+    var squats = req.body.squats;
+    var id = req.params.userId - 1;
+    
+    users[id].stats.bench = bench;
+    users[id].stats.overheadpress = overheadpress;
+    users[id].stats.deadlift = deadlift;
+    users[id].stats.squats = squats;
+    res.end();
+    
+    console.log(users[id]);
+  })
   
 app.route('/users/:userId/workouts/:workoutId')
 	.get(function(req, res){
@@ -160,7 +267,6 @@ app.route('/users/:userId/workouts/:workoutId/:exerciseName')
 			res.end("Exercise " + req.params.exerciseName + " deleted!");
 		}
 	})
-
 
 //-----------------------------------------------------------------------
 var server = app.listen(8080, function () {
