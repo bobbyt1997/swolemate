@@ -45,8 +45,7 @@ app.route('/users')
 		console.log("New user created. User ID: " + 
 		userIdCtr + "\n" + users[userIdCtr]);
   		
-		//res.end("New user created. ID: " + userIdCtr + "\n" + JSON.stringify(users[userIdCtr]));
-		   res.json(users[userIdCtr]);
+    res.json(users[userIdCtr]);
   	userIdCtr++;
   	})
   	.get(function (req, res){
@@ -105,6 +104,17 @@ app.route('/users/:userId/workouts')
 	})
   
 app.route('/users/:userId/caloricCount/')
+  .get(function ((req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else { 
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      res.json(users[id].caloricCount);
+    }
+  })
   .put(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -128,23 +138,22 @@ app.route('/users/:userId/caloricCount/')
       
       users[id].caloricCount.actual = actualCals;
       users[id].caloricCount.goal = goalCals;
-      res.end();
+      res.json(users[id].caloricCount);
     }
-    res.header("Content-Type", "application/json");
-    res.status(200);
-    
-    var cals = req.body.actual;
-    var id = req.params.userId - 1;
-    var goalCals = users[id].weight * users[id].height; 
-    var actualCals = cals + users[id].caloricCount.actual;
-    
-    users[id].caloricCount.actual = actualCals;
-    users[id].caloricCount.goal = goalCals;
-    res.end();
-    console.log(users[id]);
   })
 
 app.route('/users/:userId/weights/')
+  .get(function ((req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else { 
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      res.json(users[id].weights);
+    }
+  })
   .post(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -157,22 +166,22 @@ app.route('/users/:userId/weights/')
       var date = req.body.date;
       var weight = req.body.weight;
       users[id].weights.push({date, weight});
-      res.end();
+      res.json(users[id].weights);
     }
-
-    res.header("Content-Type", "application/json");
-    res.status(200);
-    
-    var date = req.body.date;
-    var weight = req.body.weight;
-    var id = req.params.userId - 1;
-    console.log(users[id].weights);
-    users[id].weights.push({date, weight});
-    res.end();
-    console.log(users[id]);
   })
 
 app.route('/users/:userId/stats/')
+  .get(function ((req, res) {
+    var id = req.params.userId;
+    if(!users[id]) {
+			res.status(404).send("ERROR 404: ID not found");
+		}
+		else { 
+      res.header("Content-Type", "application/json");
+      res.status(200);
+      res.json(users[id].stats);
+    }
+  })
   .put(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
@@ -191,24 +200,8 @@ app.route('/users/:userId/stats/')
       users[id].stats.overheadpress = overheadpress;
       users[id].stats.deadlift = deadlift;
       users[id].stats.squats = squats;
-      res.end();
+      res.json(users[id].stats);
     }
-    res.header("Content-Type", "application/json");
-    res.status(200);
-    
-    var bench = req.body.bench;
-    var overheadpress = req.body.overheadpress;
-    var deadlift = req.body.deadlift;
-    var squats = req.body.squats;
-    var id = req.params.userId - 1;
-    
-    users[id].stats.bench = bench;
-    users[id].stats.overheadpress = overheadpress;
-    users[id].stats.deadlift = deadlift;
-    users[id].stats.squats = squats;
-    res.end();
-    
-    console.log(users[id]);
   })
   
 app.route('/users/:userId/workouts/:workoutId')
