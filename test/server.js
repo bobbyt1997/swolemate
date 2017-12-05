@@ -80,6 +80,24 @@ describe('/POST /users/:userId/workouts/:workoutId/:exerciseName', () => {
       });
  });
 
+describe('/PUT /users/:userId/stats', () => {
+      it('it should PUT or update a user\s major lifts', (done) => {
+        var newStats = {
+          "bench": 1,
+          "overheadpress": 1,
+          "deadlift": 1,
+          "squats": 1
+        }
+        chai.request(server)
+            .put('/users/0/stats')
+            .send(newStats)
+            .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+      });
+ });
+
 describe('/GET /users', () => {
   it('it should GET information for all users', (done) => {
     chai.request(server)
@@ -105,10 +123,10 @@ describe('/GET /users/:userId', () => {
   "height":0,
   "sex":"male",
   "stats":{
-    "bench":0,
-    "overheadpress":0,
-    "deadlift":0,
-    "squats":0
+    "bench":1,
+    "overheadpress":1,
+    "deadlift":1,
+    "squats":1
   },
   "workouts":{
     "0":{

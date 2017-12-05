@@ -173,14 +173,14 @@ app.route('/users/:userId/weights/')
     console.log(users[id]);
   })
 
-app.route('/users/:userId/stats/')
+app.route('/users/:userId/stats')
   .put(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
 		}
-		else {
-      res.header("Content-Type", "application/json");
+	else {
+      res.header("Content-Type"	, "application/json");
       res.status(200);
       
       var bench = req.body.bench;
@@ -192,23 +192,10 @@ app.route('/users/:userId/stats/')
       users[id].stats.overheadpress = overheadpress;
       users[id].stats.deadlift = deadlift;
       users[id].stats.squats = squats;
-      res.end();
     }
-    res.header("Content-Type", "application/json");
+
     res.status(200);
-    
-    var bench = req.body.bench;
-    var overheadpress = req.body.overheadpress;
-    var deadlift = req.body.deadlift;
-    var squats = req.body.squats;
-    var id = req.params.userId - 1;
-    
-    users[id].stats.bench = bench;
-    users[id].stats.overheadpress = overheadpress;
-    users[id].stats.deadlift = deadlift;
-    users[id].stats.squats = squats;
     res.end();
-    
     console.log(users[id]);
   })
   
