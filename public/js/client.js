@@ -16,17 +16,30 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'http://localhost:8080/users',
-            dataType: 'application/json',
             data: user,
-            dataType: "json",
             success: function (res) {
                 console.log('success');
+                
+                window.location.assign('/app');
+                app(res);
             },
             error: function(res) {
                 console.log('failure');
             }
         });
+
     });
+
+    function app() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/users/0',
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    }
+   
     
     // Make Workouts
     $("#makeWorkouts").on('click', function () {
@@ -78,6 +91,7 @@ $(document).ready(function () {
     });
     
     // Stats for weights
+    /*
     $("#getSwole").on('click', function () {
         var stats = {};
         
@@ -100,4 +114,5 @@ $(document).ready(function () {
             }
         });
     });
+    */
 })

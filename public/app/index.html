@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Swolemate</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap import -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700i" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Front end functionality -->
+    <script type="text/javascript" src="../js/function.js"></script>
+    <!-- Client to Server JS -->
+    <script type="text/javascript" src="../js/client.js"></script>
+</head>
+
+<body>
+    <h1>App page</h1>
+    <h2>Workout Data</h2>
+    <div>NAME: <span id="name"></span></div>
+
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/users/0',
+            success: function (user) {
+                console.log(user);
+                document.getElementById("name").innerHTML = user.name;
+            }
+        });
+    </script>
+</body>
+
+</html>
