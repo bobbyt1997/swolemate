@@ -149,6 +149,24 @@ describe('/GET /users/:userId', () => {
   });
 });
 
+describe('/GET /users/:userId/workouts', () => {
+  it('it should GET workout information from user with id 0', (done) => {
+    chai.request(server)
+      .get('/users/0/workouts')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.eql({"0":{
+      "name" : "Chest Workout",
+      "bench": {"sets": 5,"reps": 10},
+      "flies": {"sets": 5,"reps": 10},
+      "pushups": {"sets": 5, "reps": 10}
+    }});
+        done();
+      });
+  });
+}); 
+
 describe('/GET /users/:userId/workouts/:workoutId', () => {
   it('it should GET workout information with specified id from specified user', (done) => {
     chai.request(server)
