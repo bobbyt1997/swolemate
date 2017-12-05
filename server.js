@@ -104,7 +104,7 @@ app.route('/users/:userId/workouts')
 	})
   
 app.route('/users/:userId/caloricCount/')
-  .get(function ((req, res) {
+  .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
@@ -143,7 +143,7 @@ app.route('/users/:userId/caloricCount/')
   })
 
 app.route('/users/:userId/weights/')
-  .get(function ((req, res) {
+  .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
@@ -171,7 +171,7 @@ app.route('/users/:userId/weights/')
   })
 
 app.route('/users/:userId/stats/')
-  .get(function ((req, res) {
+  .get(function (req, res) {
     var id = req.params.userId;
     if(!users[id]) {
 			res.status(404).send("ERROR 404: ID not found");
